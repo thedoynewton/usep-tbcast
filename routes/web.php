@@ -5,14 +5,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Set the login page as the default welcome page
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Auth/Login'); // Render the Login page instead of the Welcome page
+})->name('login');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
